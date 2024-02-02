@@ -68,9 +68,13 @@ label.invalid {
   color: #f87171;
 }
 
+.fontStyleItalic {
+  font-style: italic;
+}
+
 input.invalid {
   color: #ef4444;
-  border-color: #f73f3f;
+  /* border-color: #f73f3f; */
   background-color: #fed2d2;
 }
 
