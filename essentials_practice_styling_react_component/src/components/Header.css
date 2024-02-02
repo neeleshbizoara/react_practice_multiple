@@ -26,11 +26,7 @@ header {
     margin: 0;
   }
   
-  .uppercasLetters{
-    text-transform: uppercase;
-  }
-
-  .paragraph {
+  header p {
     text-align: center;
     color: #a39191;
     margin: 0;
