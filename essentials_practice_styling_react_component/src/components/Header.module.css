@@ -26,7 +26,11 @@ header {
     margin: 0;
   }
   
-  header p {
+  .uppercasLetters{
+    text-transform: uppercase;
+  }
+
+  .paragraph {
     text-align: center;
     color: #a39191;
     margin: 0;
