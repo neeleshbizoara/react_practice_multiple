@@ -26,12 +26,11 @@ header {
     margin: 0;
   }
   
-  p {
+  /* header p {
     text-align: center;
-    /* color: #a39191; */
-    color: blue;
+    color: #a39191;
     margin: 0;
-  }
+  } */
   
   @media (min-width: 768px) {
     header {
