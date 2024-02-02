@@ -11,7 +11,7 @@ const Label = styled.label<{ $inValid?: boolean }>`
 `;
 
 // In react Typescript
-const Input = styled.input<{ $inValid?: boolean }>`
+/* const Input = styled.input<{ $inValid?: boolean }>`
   width: 100%;
   padding: 0.75rem 1rem;
   line-height: 1.5;
@@ -20,13 +20,32 @@ const Input = styled.input<{ $inValid?: boolean }>`
   border: 1px solid ${({ $inValid }) => ($inValid ? "#f73f3f" : "transparent")};
   border-radius: 0.25rem;
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
-`;
+`; 
 
 export default function CustomInput({ label, inValid, ...props }) {
   return (
     <p>
       <Label $inValid={inValid}>{label}</Label>
       <Input $inValid={inValid} {...props}></Input>
+    </p>
+  );
+}*/
+
+export default function Input({ label, inValid, ...props }) {
+  let labelClasses = "block mb-2 text-xs font-bold tracking-wide uppercase";
+  let inputClasses =
+    "w-full px-3 py-2 leading-tight text-gray-700 border rounded shadow ";
+  if (inValid) {
+    labelClasses += " text-red-400";
+    inputClasses += " text-red-500 bg-red-100 border-red-300";
+  } else {
+    labelClasses += " text-stone-300";
+    inputClasses += " text-gray-700 bg-stone-300";
+  }
+  return (
+    <p>
+      <label className={labelClasses}>{label}</label>
+      <input className={inputClasses} {...props} />
     </p>
   );
 }

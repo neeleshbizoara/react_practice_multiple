@@ -48,3 +48,9 @@ const Input = styled.input\`.....\`;
       </ControlContainer>
       </div>
 </code>
+
+**Tailwind CSS**
+
+Installation <a href="https://tailwindcss.com/docs/guides/create-react-app">ref</a> for react project. 
+
+<a href="https://tailwindcss.com/docs/editor-setup">https://tailwindcss.com/docs/editor-setup</a>
