@@ -6,29 +6,43 @@ import Modal from "./components/Modal.jsx";
 import DeleteConfirmation from "./components/DeleteConfirmation.jsx";
 import logoImg from "./assets/logo.png";
 import { sortPlacesByDistance } from "./loc.js";
+import { useEffect } from "react";
+import { useCallback } from "react";
+
+// Place here as this code will not need in each rerendring cycle
+const sortedIds = JSON.parse(localStorage.getItem("selectedPlaces")) || [];
+const sortedPlaces = sortedIds.map((id) =>
+  AVAILABLE_PLACES.find((place) => place.id === id)
+);
 
 function App() {
-  const modal = useRef();
+  // const modal = useRef();
+
   const selectedPlace = useRef();
-  const [pickedPlaces, setPickedPlaces] = useState([]);
+  const [modelIsOpen, setModelIsOpen] = useState(false);
+  const [pickedPlaces, setPickedPlaces] = useState(sortedPlaces);
   const [availablePlaces, setAvailablePlaces] = useState([]);
 
-  navigator.geolocation.getCurrentPosition((position) => {
-    const sortedPlaces = sortPlacesByDistance(
-      AVAILABLE_PLACES,
-      position.coords.latitude,
-      position.coords.longitude
-    );
-    setAvailablePlaces(sortedPlaces);
-  });
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition((position) => {
+      const sortedPlaces = sortPlacesByDistance(
+        AVAILABLE_PLACES,
+        position.coords.latitude,
+        position.coords.longitude
+      );
+      setAvailablePlaces(sortedPlaces);
+    });
+  }, []);
 
   function handleStartRemovePlace(id) {
-    modal.current.open();
+    // modal.current.open();
+    setModelIsOpen(true);
     selectedPlace.current = id;
   }
 
   function handleStopRemovePlace() {
-    modal.current.close();
+    // modal.current.close();
+    setModelIsOpen(false);
   }
 
   function handleSelectPlace(id) {
@@ -39,18 +53,40 @@ function App() {
       const place = AVAILABLE_PLACES.find((place) => place.id === id);
       return [place, ...prevPickedPlaces];
     });
+
+    // useEffect(); useEffect method call threo error here
+    // Error: Invalid hook call. Hooks can only be called inside of the body of a function component. This could happen for one of the following reasons:
+    // 1. You might have mismatching versions of React and the renderer (such as React DOM)
+    // 2. You might be breaking the Rules of Hooks
+    // 3. You might have more than one copy of React in the same app
+
+    const storedIds = JSON.parse(localStorage.getItem("selectedPlaces")) || [];
+    if (storedIds.indexOf(id) === -1) {
+      localStorage.setItem(
+        "selectedPlaces",
+        JSON.stringify([id, ...storedIds])
+      );
+    }
   }
 
-  function handleRemovePlace() {
+  const handleRemovePlace = useCallback(function handleRemovePlace() {
     setPickedPlaces((prevPickedPlaces) =>
       prevPickedPlaces.filter((place) => place.id !== selectedPlace.current)
     );
-    modal.current.close();
-  }
+    // modal.current.close();
+    setModelIsOpen(false);
+
+    const storedIds = JSON.parse(localStorage.getItem("selectedPlaces")) || [];
+    localStorage.setItem(
+      "selectedPlaces",
+      JSON.stringify(storedIds.filter((id) => id !== selectedPlace.current))
+    );
+  },[])
 
   return (
     <>
-      <Modal ref={modal}>
+      <Modal open={modelIsOpen} onClose={handleStopRemovePlace}>
+        {/* ref={modal} */}
         <DeleteConfirmation
           onCancel={handleStopRemovePlace}
           onConfirm={handleRemovePlace}
@@ -75,6 +111,7 @@ function App() {
         <Places
           title="Available Places"
           places={availablePlaces}
+          fallbackText="Sorting places by distance..."
           onSelectPlace={handleSelectPlace}
         />
       </main>
