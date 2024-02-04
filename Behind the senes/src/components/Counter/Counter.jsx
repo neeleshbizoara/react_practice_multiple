@@ -9,6 +9,7 @@ import { memo } from "react";
 import { useCallback } from "react";
 import { useMemo } from "react";
 import CounterHistory from "./CounterHistory.jsx";
+import { useEffect } from "react";
 
 function isPrime(number) {
   log("Calculating if is prime number", 2, "other");
@@ -33,6 +34,14 @@ const Counter = memo(function Counter({ initialCount }) {
     () => isPrime(initialCount),
     [initialCount]
   );
+
+  /* To fix set button issue 
+  But useEffect is not optimal solution also it triggers an extra component execution 
+  As here setCounterChanges() runs after the component function execution.
+  Here it is executing twice */
+  // useEffect(() => {
+  //   setCounterChanges([{ value: initialCount, id: Math.random() * 1000 }]);
+  // }, [initialCount]);
 
   // const [counter, setCounter] = useState(initialCount);
   const [counterChanges, setCounterChanges] = useState([
