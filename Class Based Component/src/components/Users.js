@@ -18,6 +18,13 @@ class Users extends Component{
       list: []
     };
   }
+
+  componentDidUpdate() {
+    if(this.props.users.length === 0) {
+      throw new Error('No users Provided!!!!');
+    }
+  }
+
   toggleUsersHandler() {
     // this.state.showUsers = false; // Not allowed
     /* this.setState({
