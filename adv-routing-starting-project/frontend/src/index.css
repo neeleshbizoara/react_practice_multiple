@@ -48,13 +48,3 @@ ul {
   margin: 0;
   padding: 0;
 }
-
-ul a{
-  display: block;
-}
-
-main {
-  margin: 2rem auto;
-  text-align: center;
-  
-}
