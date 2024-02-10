@@ -1,5 +1,5 @@
-function EditEvent() {
-    return <><h1>Edit event page</h1></>
+function EditEventPage() {
+  return <h1>EditEventPage</h1>;
 }
 
-export default EditEvent;
+export default EditEventPage;
