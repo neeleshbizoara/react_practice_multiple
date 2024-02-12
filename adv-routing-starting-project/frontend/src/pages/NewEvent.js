@@ -12,31 +12,6 @@ function NewEventPage() {
 export default NewEventPage;
 
 export async function action({ request, param }) {
-  const eventData = {
-    title: param.title,
-    image: param.image,
-    date: param.date,
-    description: param.description,
-  };
-
-  const response = await fetch('http://localhost:8080/events', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': '*'
-    },
-    body: JSON.stringify(eventData),
-  });
-
-  if (!response.ok) {
-    throw new Error('Could not save event.');
-  }
-
-  return redirect('/events');
-}
-
-
-/* export async function action({ request, param }) {
   const data = await request.formData();
 
   const eventData = {
@@ -59,4 +34,4 @@ export async function action({ request, param }) {
   }
 
   return redirect('/events');
-} */
+}
