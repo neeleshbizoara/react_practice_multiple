@@ -30,7 +30,6 @@ router.get('/:id', async (req, res, next) => {
 });
 
 router.post('/', async (req, res, next) => {
-  debugger;
   const data = req.body;
 
   let errors = {};
