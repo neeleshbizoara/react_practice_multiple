@@ -3,7 +3,6 @@ import EventForm from "../components/EventForm";
 
 function EditEventPage() {
   const data = useRouteLoaderData('event-detail');
-  debugger
   const event = data.event;
   return <EventForm event={event} />;
 }
