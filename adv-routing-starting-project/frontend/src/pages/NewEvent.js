@@ -6,11 +6,11 @@ function NewEventPage() {
     event.preventDefault();
     // Extract data and put call
   } */
-  return <EventForm />;
+  return <EventForm method="post"/>;
 }
 
 export default NewEventPage;
-
+/* 
 export async function action({ request, param }) {
   const data = await request.formData();
 
@@ -38,4 +38,4 @@ export async function action({ request, param }) {
   }
 
   return redirect('/events');
-}
+} */
