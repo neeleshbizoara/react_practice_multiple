@@ -8,7 +8,6 @@ function AuthenticationPage() {
 export default AuthenticationPage;
 
 export async function action({ request }) {
-  debugger
   const searchParams = new URL(request.url).searchParams;
   const mode = searchParams.get("mode") || "login";
 
@@ -38,6 +37,9 @@ export async function action({ request }) {
     throw json({ message: "Could not authenticate user." }, { status: 500 });
   }
 
+  const resData = await response.json();
+  const token = resData.token;
+  localStorage.setItem('token', token);
   // 
   return redirect('/')
 }
