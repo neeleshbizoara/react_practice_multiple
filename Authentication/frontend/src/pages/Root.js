@@ -11,7 +11,7 @@ import { getTokenDuration } from "../util/auth";
 
 function RootLayout() {
   // const navigation = useNavigation();
-debugger;
+
   const token = useLoaderData();
   const submit = useSubmit();
 
