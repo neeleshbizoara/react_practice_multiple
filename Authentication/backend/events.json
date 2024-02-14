@@ -1,1 +1,18 @@
-{"events":[{"title":"Test last","image":"https://www.kasandbox.org/programming-images/avatars/spunky-sam.png","date":"2024-02-14","description":"Test","id":"284dfb7a-c8ef-48ec-bcfe-67d0bb1e22e3"}],"users":[{"email":"test@test.com","password":"$2a$12$oW2FfUg9mybU5GtZvLX5Ru35A7nYSZy1TakLmqv4vKHH4NGoJoKha","id":"d2a06b80-123d-4079-9147-25cb560dfbce"}]}
+{
+  "events": [
+    {
+      "title": "Test last",
+      "image": "https://www.kasandbox.org/programming-images/avatars/spunky-sam.png",
+      "date": "2024-02-14",
+      "description": "Test",
+      "id": "284dfb7a-c8ef-48ec-bcfe-67d0bb1e22e3"
+    }
+  ],
+  "users": [
+    {
+      "email": "test@test.com",
+      "password": "$2a$12$oW2FfUg9mybU5GtZvLX5Ru35A7nYSZy1TakLmqv4vKHH4NGoJoKha",
+      "id": "d2a06b80-123d-4079-9147-25cb560dfbce"
+    }
+  ]
+}
