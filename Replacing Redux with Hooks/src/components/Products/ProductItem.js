@@ -8,10 +8,13 @@ import { useStore } from '../../hooks-store/store';
 // import { ProductsContext } from '../../context/products-context';
 // import { useContext } from 'react';
 
-const ProductItem = props => {
+// TO DO: Resolve why After adding React.memo it throw error 
+// const ProductItem = React.memo(props => {
+const ProductItem = (props => {
+  console.log('Render');
   // const toggleFav = useContext(ProductsContext).toggleFav
   // const dispatch = useDispatch();
-  const dispatch = useStore()[1]
+  const dispatch = useStore(false)[1]
 
   const toggleFavHandler = () => {
     // dispatch(toggleFav(props.id));
@@ -33,6 +36,6 @@ const ProductItem = props => {
       </div>
     </Card>
   );
-};
+});
 
 export default ProductItem;
