@@ -1,13 +1,21 @@
 import Accordion from "./components/Accordion/Accordion";
-import AccordionItem from "./components/Accordion/AccordionItem";
+// import AccordionItem from "./components/Accordion/AccordionItem";
 
 function App() {
   return (
     <main>
       <section>
+        {/* It will throw error */}
+        {/* <Accordion.Item
+          id="experience"
+          className="accordion-item"
+          title="We got 20 Years of experience"
+        ></Accordion.Item> */}
+
         <h2>Why work with us?</h2>
         <Accordion className="accordion">
-          <AccordionItem
+          {/* <AccordionItem */}
+          <Accordion.Item
             id="experience"
             className="accordion-item"
             title="We got 20 Years of experience"
@@ -19,8 +27,10 @@ function App() {
                 vacation trips for more than 20 years.
               </p>
             </article>
-          </AccordionItem>
-          <AccordionItem
+            {/* </AccordionItem> */}
+          </Accordion.Item>
+          {/* <AccordionItem */}
+          <Accordion.Item
             id="local-guide"
             className="accordion-item"
             title="We're working with local guides"
@@ -32,7 +42,8 @@ function App() {
                 pleasant vacation.
               </p>
             </article>
-          </AccordionItem>
+            {/* </AccordionItem> */}
+          </Accordion.Item>
         </Accordion>
       </section>
     </main>
