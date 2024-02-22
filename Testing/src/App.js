@@ -22,7 +22,7 @@ function App() {
         </a>
       </header> */}
       <Greeting/>
-      {/* <Async/> */}
+      <Async/>
       <Album/>
     </div>
   );

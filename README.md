@@ -1,6 +1,6 @@
 "# react_practice_multiple" 
 
-## Header 2 Context API Summary (and why NOT to use it instead of Redux)
+### Context API Summary (and why NOT to use it instead of Redux)
 
 The Context API in React provides a way to pass data through the component tree without having to pass props manually at every level. It consists of two main parts: the <b>'Provider'</b> component and the <b>'Consumer'</b> component (or the <b>'useContext'</b> hook for functional components). Here's a summary of the Context API:
 <ol><li>
@@ -64,3 +64,14 @@ Now, regarding why not to use Context API instead of Redux:
 </li>
 </ol>
 In summary, while the Context API can be sufficient for simple state management needs, Redux is often preferred for larger applications with complex state requirements, performance considerations, and developer experience.
+
+
+### React Testing 
+Ref: 
+<ol>
+<li><a href="https://www.w3.org/TR/html-aria/#docconformance">https://www.w3.org/TR/html-aria/#docconformance</a></li>
+  <li><a href="https://jestjs.io/docs/getting-started">https://jestjs.io/docs/getting-started</a></li>
+  <li><a href="https://testing-library.com/docs/react-testing-library/intro">https://testing-library.com/docs/react-testing-library/intro</a></li>
+  <li><a href="https://github.com/testing-library/react-hooks-testing-library">https://github.com/testing-library/react-hooks-testing-library</a></li>
+  <li> <a href="https://www.udemy.com/course/react-the-complete-guide-incl-redux/learn/lecture/25890082#learning-tools">https://www.udemy.com/course/react-the-complete-guide-incl-redux/learn/lecture/25890082#learning-tools</a></li>
+</ol>
