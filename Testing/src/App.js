@@ -1,6 +1,8 @@
 import logo from './logo.svg';
 import './App.css';
 import Greeting from './components/Greeting';
+import Async from './components/Async';
+import Album from './components/Album';
 
 function App() {
   return (
@@ -20,6 +22,8 @@ function App() {
         </a>
       </header> */}
       <Greeting/>
+      {/* <Async/> */}
+      <Album/>
     </div>
   );
 }
