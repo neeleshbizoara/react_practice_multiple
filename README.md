@@ -135,3 +135,7 @@ const stringArray = insertAtBeginning<string>(['a', 'b', 'c'], 'd');
 ```
 
 So we can not just use the angle brackets to define a generic type but also to USE a generic type and explicitly set the placeholder type that should be used - sometimes this is required if TypeScript is not able to infer the (correct) type. We'll see this later in this course section!
+
+
+### Handle multiple environments in ReactJs [dev, stag, prod]
+Ref: <a href="https://dev.to/rajeshroyal/handle-multiple-environments-in-reactjs-dev-stag-prod-1b9e"> handle-multiple-environments-in-reactjs-dev-stag-prod</a>
