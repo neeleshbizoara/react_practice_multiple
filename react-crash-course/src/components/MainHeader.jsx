@@ -1,11 +1,11 @@
-import classes from "./MainHeader.module.css";
-import { MdMessage, MdPostAdd } from "react-icons/md";
+import { MdPostAdd, MdMessage } from 'react-icons/md';
 
-function MainHeader({onCreatePost}) {
+import classes from './MainHeader.module.css';
 
+function MainHeader({ onCreatePost }) {
   return (
     <header className={classes.header}>
-      <h1>
+      <h1 className={classes.logo}>
         <MdMessage />
         React Poster
       </h1>
