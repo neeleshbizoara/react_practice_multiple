@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
 
 import Post from "./Post";
-import NewPost from "../routes/NewPost";
-import Modal from "./Modal";
+// import NewPost from "../routes/NewPost";
+// import Modal from "./Modal";
 import classes from "./PostsList.module.css";
 import { useLoaderData } from "react-router-dom";
 
@@ -44,11 +44,11 @@ function PostsList() {
       {posts.length > 0 && (
         <ul className={classes.posts}>
           {posts.map((item) => (
-            <Post author={item.author} body={item.body} key={Math.random()} />
+            <Post author={item.author} id={item.id} body={item.body} key={item.id} />
           ))}
         </ul>
       )}
-      { posts.length === 0 && (
+      {posts.length === 0 && (
         <div style={{ textAlign: "center", color: "white" }}>
           <h2>There are no posts yet.</h2>
           <p>Start adding some!</p>
