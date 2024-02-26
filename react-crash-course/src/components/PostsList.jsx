@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 
 import Post from "./Post";
-import NewPost from "./NewPost";
+import NewPost from "../routes/NewPost";
 import Modal from "./Modal";
 import classes from "./PostsList.module.css";
 
-function PostsList({ isPosting, onStopPosting }) {
+function PostsList() {
   const [posts, setPosts] = useState([]);
   const [isFetching, setIsFetching] = useState(false);
 
@@ -25,7 +25,7 @@ function PostsList({ isPosting, onStopPosting }) {
     fetchPosts();
   }, []);
 
-  function addPostHandler(postData) {
+  /* function addPostHandler(postData) {
     const response = fetch("http://localhost:8080/posts", {
       method: "POST",
       body: JSON.stringify(postData),
@@ -36,14 +36,9 @@ function PostsList({ isPosting, onStopPosting }) {
     setPosts((existingPost) => {
       return [postData, ...existingPost];
     });
-  }
+  } */
   return (
     <>
-      {isPosting && (
-        <Modal onClose={onStopPosting}>
-          <NewPost onCancel={onStopPosting} onAddPost={addPostHandler} />
-        </Modal>
-      )}
       {!isFetching && posts.length > 0 && (
         <ul className={classes.posts}>
           {posts.map((item) => (
