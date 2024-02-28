@@ -140,8 +140,15 @@ So we can not just use the angle brackets to define a generic type but also to U
 ### Handle multiple environments in ReactJs [dev, stag, prod]
 Ref: <a href="https://dev.to/rajeshroyal/handle-multiple-environments-in-reactjs-dev-stag-prod-1b9e"> handle-multiple-environments-in-reactjs-dev-stag-prod</a>
 
-# Old Course Code Ref
+## Old Course Code Ref
 <a herf="https://www.udemy.com/course/react-the-complete-guide-incl-redux/learn/lecture/25764404#overview">https://www.udemy.com/course/react-the-complete-guide-incl-redux/learn/lecture/25764404#overview</a>
+
+## expense-tracker practice in Typescript
+<a href="https://github.com/pablomaribondo/expense-tracker/tree/main"> Github link </a>
+or Repo can clone 
+```
+git clone https://github.com/pablomaribondo/expense-tracker.git
+```
 
 
 
