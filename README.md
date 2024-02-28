@@ -142,3 +142,153 @@ Ref: <a href="https://dev.to/rajeshroyal/handle-multiple-environments-in-reactjs
 
 # Old Course Code Ref
 <a herf="https://www.udemy.com/course/react-the-complete-guide-incl-redux/learn/lecture/25764404#overview">https://www.udemy.com/course/react-the-complete-guide-incl-redux/learn/lecture/25764404#overview</a>
+
+
+
+##Controlled vs Uncontrolled Components:
+**Controlled Components**: In React, a controlled component is one where React controls the state of the component. This means that the component's state is managed by React itself through props. Any changes to the component's state are handled by React, typically through event handlers. Controlled components ensure that React has complete control over the component's behavior and state.   
+
+Example: Input fields in forms where the value is controlled by React through the `value` prop.
+
+ **Uncontrolled Components**: Conversely, an uncontrolled component is one where the component manages its own state internally, without relying on React to control it. The state of an uncontrolled component is typically managed using traditional DOM methods like `document.getElementById` or `element.value`. Uncontrolled components are useful when you need to integrate with non-React code or when you want to keep the component's state separate from the React application state.
+ 
+Example: Traditional HTML form elements where the value is managed directly by the DOM.
+    
+##Stateless vs Stateful Components
+**Stateless Components**: Also known as functional components, stateless components are defined as plain JavaScript functions that accept props as an argument and return React elements. These components don't have their own state and are primarily used for UI rendering based on the provided props. They are simple, lightweight, and easy to test.
+Example:
+```
+const MyComponent = (props) => {
+    return <div>Hello, {props.name}!</div>;
+  };
+```
+
+**Stateful Components**: Stateful components, on the other hand, are defined as ES6 classes that extend React.Component. These components have their own state, which can be updated using `setState`. Stateful components manage their own data and are responsible for handling user interactions and business logic. They are more complex than stateless components but offer greater flexibility and functionality.
+
+Example:
+```
+class MyComponent extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { count: 0 };
+  }
+  render() {
+    return (
+      <div>
+        <p>Count: {this.state.count}</p>
+        <button onClick={() => this.setState({ count: this.state.count + 1 })}>
+          Increment
+        </button>
+      </div>
+    );
+  }
+}
+   ```
+In summary, controlled components rely on React to manage their state, while uncontrolled components manage their own state. Similarly, stateless components don't have their own state, whereas stateful components do. The choice between controlled/uncontrolled and stateless/stateful components depends on the specific requirements and complexity of the application.
+
+
+
+ **let's go through examples of controlled vs uncontrolled components and stateless vs stateful components**
+ ### Controlled vs Uncontrolled Components:
+  Controlled Component Example:
+  In a controlled component, React controls the state of the component through props. Here's an example of a controlled input field where the value is controlled by React:
+  
+  ```
+import React, { useState } from 'react';
+
+const ControlledInput = () => {
+  const [value, setValue] = useState('');
+
+  const handleChange = (event) => {
+    setValue(event.target.value);
+  };
+
+  return (
+    <input type="text" value={value} onChange={handleChange} />
+  );
+};
+
+export default ControlledInput;
+```
+In this example, the `value` of the input field is controlled by the `value` prop, which is derived from the `useState` hook. The `handleChange` function updates the state (`value`) whenever the input value changes.
+
+#### Uncontrolled Component Example:
+In an uncontrolled component, the component manages its own state internally without relying on React to control it. Here's an example of an uncontrolled input field where the value is managed by the DOM:
+
+```
+import React from 'react';
+
+const UncontrolledInput = () => {
+  const inputRef = React.useRef();
+
+  const handleClick = () => {
+    alert('Input value: ' + inputRef.current.value);
+  };
+
+  return (
+    <>
+      <input type="text" ref={inputRef} />
+      <button onClick={handleClick}>Get Value</button>
+    </>
+  );
+};
+
+export default UncontrolledInput;
+```
+
+In this example, the input field's value is managed by the DOM directly, using a ref (`inputRef`). When the button is clicked, the input value is retrieved from the DOM using `inputRef.current.value`.
+
+### Stateless vs Stateful Components:
+#### Stateless (Functional) Component Example:
+Stateless components are simple functions that accept props as arguments and return JSX. They don't have their own state. Here's an example:
+
+```
+import React from 'react';
+
+const StatelessComponent = (props) => {
+  return (
+    <div>
+      <p>Hello, {props.name}!</p>
+    </div>
+  );
+};
+
+export default StatelessComponent;
+```
+
+In this example, `StatelessComponent` is a functional component that accepts a `name` prop and renders a greeting message.
+
+#### Stateful (Class) Component Example:
+Stateful components are ES6 classes that extend `React.Component`. They have their own state, which can be updated using `setState`. Here's an example:
+
+```
+import React, { Component } from 'react';
+
+class StatefulComponent extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      count: 0
+    };
+  }
+
+  incrementCount = () => {
+    this.setState({ count: this.state.count + 1 });
+  };
+
+  render() {
+    return (
+      <div>
+        <p>Count: {this.state.count}</p>
+        <button onClick={this.incrementCount}>Increment</button>
+      </div>
+    );
+  }
+}
+
+export default StatefulComponent;
+```
+
+In this example, `StatefulComponent` is a class component with its own state (`count`). The `incrementCount` method updates the state whenever the button is clicked, causing a re-render with the updated count.
+
+In summary, controlled components have their state controlled by React, while uncontrolled components manage their state independently. Stateless components are simple functions without state, while stateful components are ES6 classes with their own state."

@@ -2,7 +2,8 @@ import { useState } from "react";
 import Card from "../UI/Card";
 import ExpenseItem from "./ExpenseItem";
 import "./Expenses.css";
-const EXPENSES = [
+import ExpensesFilter from "./ExpensesFilter";
+/* const EXPENSES = [
   {
     id: "e1",
     title: "Toilet Paper",
@@ -22,9 +23,9 @@ const EXPENSES = [
     amount: 450,
     date: new Date(2021, 5, 12),
   },
-];
-function Expenses() {
-  const [expenses, setExpenses] = useState(EXPENSES);
+]; */
+function Expenses(props) {
+  /* const [expenses, setExpenses] = useState(EXPENSES);
 
   function changeTitle(id) {
     setExpenses((prev) => {
@@ -36,10 +37,55 @@ function Expenses() {
         }
       });
     });
+  } */
+
+  // Start of Derived / Computed State concept
+  const [filteredYear, setFilteredYear] = useState("2020");
+
+  let filterInfoText = "2019, 2021 & 2022";
+
+  if (filteredYear === "2019") {
+    filterInfoText = "2020, 2021 & 2022";
+  } else if (filteredYear === "2021") {
+    filterInfoText = "2019, 2020 & 2022";
+  } else {
+    filterInfoText = "2019, 2020 & 2021";
   }
+
+  const filterChangeHandler = (selectedYear) => {
+    setFilteredYear(selectedYear);
+  };
+
+  // end of Derived / Computed State concept
+
   return (
     <Card className="expenses">
-      <ExpenseItem expenses={expenses} changeTitleHandler={changeTitle} />
+      {/* <ExpenseItem expenses={expenses} changeTitleHandler={changeTitle} /> */}
+      <ExpensesFilter
+        selected={filteredYear}
+        onChangeFilter={filterChangeHandler}
+      />
+      <p>Date for years {filterInfoText} is hidden.</p>
+      <ExpenseItem
+        title={props.items[0].title}
+        amount={props.items[0].amount}
+        date={props.items[0].date}
+      />
+      <ExpenseItem
+        title={props.items[1].title}
+        amount={props.items[1].amount}
+        date={props.items[1].date}
+      />
+      <ExpenseItem
+        title={props.items[2].title}
+        amount={props.items[2].amount}
+        date={props.items[2].date}
+      />
+      <ExpenseItem
+        title={props.items[3].title}
+        amount={props.items[3].amount}
+        date={props.items[3].date}
+      />
     </Card>
   );
 }

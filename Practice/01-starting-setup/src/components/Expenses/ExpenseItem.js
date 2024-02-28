@@ -1,28 +1,32 @@
 import Card from "../UI/Card";
 import ExpenseDate from "./ExpenseDate";
 import "./ExpenseItem.css";
-import {useState} from 'react';
+import { useState } from "react";
 
-function ExpenseItem({ expenses, changeTitleHandler }) {
+function ExpenseItem(props) {
   // const [title, setTitle] = useState(expenses);
   // const changeTitleHandler = (id) => {
   //   setTitle('Updated!!');
   //   // console.log("Call " + even);
   // };
+
+  const [title, setTitle] = useState(props.title);
+  console.log("ExpenseItem evaluated by React");
+
+  const changeHandler = () => {
+    setTitle("Updated!");
+    console.log(title);
+  };
   return (
     <>
-      {expenses.map((item) => {
-        return (
-          <Card className="expense-item" key={item.id}>
-            <ExpenseDate date={item.date}/>
-            <div className="expense-item__description">
-              <h2>{item.title}</h2>
-              <div className="expense-item__price">${item.amount}</div>
-            </div>
-            <button onClick={() => changeTitleHandler(item.id)}>Change Title</button>
-          </Card>
-        );
-      })}
+      <Card className="expense-item">
+        <ExpenseDate date={props.date} />
+        <div className="expense-item__description">
+          <h2>{title}</h2>
+          <div className="expense-item__price">${props.amount}</div>
+        </div>
+        <button onClick={changeHandler}>Change Title</button>
+      </Card>
     </>
   );
 }
