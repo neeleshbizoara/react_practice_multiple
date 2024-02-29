@@ -4,25 +4,25 @@ import "./ExpenseItem.css";
 import { useState } from "react";
 
 function ExpenseItem(props) {
-  // const [title, setTitle] = useState(expenses);
-  // const changeTitleHandler = (id) => {
-  //   setTitle('Updated!!');
-  //   // console.log("Call " + even);
-  // };
-
   const [title, setTitle] = useState(props.title);
-  console.log("ExpenseItem evaluated by React");
+  const changeTitleHandler = (id) => {
+    setTitle('Updated!!');
+    // console.log("Call " + even);
+  };
 
+  // const [title, setTitle] = useState(props.title);
+  console.log("ExpenseItem evaluated by React");
   const changeHandler = () => {
     setTitle("Updated!");
     console.log(title);
   };
   return (
     <>
-      <Card className="expense-item">
+      <Card className="expense-item" key={props.id}>
         <ExpenseDate date={props.date} />
+        
         <div className="expense-item__description">
-          <h2>{title}</h2>
+          <h2>{title} - {props.id}</h2>
           <div className="expense-item__price">${props.amount}</div>
         </div>
         <button onClick={changeHandler}>Change Title</button>

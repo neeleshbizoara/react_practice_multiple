@@ -3,44 +3,47 @@ import "./ExpenseForm.css";
 
 const ExpenseForm = (props) => {
   const [userInput, setUserInput] = useState({
-    enteredTitle: "",
-    enteredAmount: "",
-    enteredDate: "",
+    title: "",
+    amount: "",
+    date: "",
+    // title: "",
+    // amount: "",
+    // date: "",
   });
 
   const inputChangeHandler = (identifier, value) => {
     if (identifier === "title") {
       setUserInput((prevState) => {
-        return { ...prevState, enteredTitle: value };
+        return { ...prevState, title: value };
       });
     } else if (identifier === "amount") {
       setUserInput((prevState) => {
-        return { ...prevState, enteredAmount: value };
+        return { ...prevState, amount: value };
       });
     } else {
       setUserInput((prevState) => {
-        return { ...prevState, enteredDate: value };
+        return { ...prevState, date: new Date(value) };
       });
     }
   };
 
   /* const titleChangeHandler = (event) => {
     setUserInput((prevState) => {
-      return { ...prevState, enteredTitle: event.target.value };
+      return { ...prevState, title: event.target.value };
     });
   };
 
   const amountChangeHandler = (event) => {
-    // setUserInput({ ...userInput, enteredAmount: event.target.value });
+    // setUserInput({ ...userInput, amount: event.target.value });
     setUserInput((prevState) => {
-      return { ...prevState, enteredAmount: event.target.value };
+      return { ...prevState, amount: event.target.value };
     });
   };
 
   const dateChangeHandler = (event) => {
-    // setUserInput({ ...userInput, enteredDate: event.target.value });
+    // setUserInput({ ...userInput, date: event.target.value });
     setUserInput((prevState) => {
-      return { ...prevState, enteredDate: event.target.value };
+      return { ...prevState, date: event.target.value };
     }); 
   };*/
 
@@ -53,9 +56,9 @@ const ExpenseForm = (props) => {
     setUserInput((prevState) => {
       return {
         ...prevState,
-        enteredTitle: "",
-        enteredAmount: "",
-        enteredDate: "",
+        title: "",
+        amount: "",
+        date: "",
       };
     });
   };
@@ -68,7 +71,7 @@ const ExpenseForm = (props) => {
           {/* <input type="text" onChange={titleChangeHandler} /> */}
           <input
             type="text"
-            value={userInput.enteredTitle}
+            value={userInput.title}
             onChange={(event) =>
               inputChangeHandler("title", event.target.value)
             }
@@ -80,7 +83,7 @@ const ExpenseForm = (props) => {
             type="number"
             min="0.01"
             step="0.01"
-            value={userInput.enteredAmount}
+            value={userInput.amount}
             onChange={(event) =>
               inputChangeHandler("amount", event.target.value)
             }
@@ -98,7 +101,7 @@ const ExpenseForm = (props) => {
             type="date"
             min="2019-01-01"
             max="2024-02-29"
-            value={userInput.enteredDate}
+            value={userInput.date}
             onChange={(event) => inputChangeHandler("date", event.target.value)}
           />
         </div>

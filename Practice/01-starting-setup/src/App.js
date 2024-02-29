@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Expenses from "./components/Expenses/Expenses";
 import NewExpense from "./components/NewExpense/NewExpense";
 const EXPENSES = [
@@ -28,15 +29,25 @@ const EXPENSES = [
 //   React.createElement('h2', {}, "Let's get started!"),
 //   React.createElement(Expenses, { items: expenses })
 // );
-const addExpenseHandler = (expense) => {
-  console.log("In App.js");
-  console.log(expense);
-};
 function App() {
+  const [expenses, setExpenses] = useState(EXPENSES);
+
+  const addExpenseHandler = (expense) => {
+    console.log("In App.js");
+    // console.log(expense);
+    setTimeout(setExpenses((prevState) => {
+      console.log(expense)
+      const updatedData = [expense, ...prevState]
+      console.log(updatedData)
+      return updatedData;
+    }), 0)
+    
+  };
+
   return (
     <div>
-      <NewExpense onAddExpense={addExpenseHandler}/>
-      <Expenses items={EXPENSES} />
+      <NewExpense onAddExpense={addExpenseHandler} />
+      <Expenses items={expenses} />
     </div>
   );
 }
