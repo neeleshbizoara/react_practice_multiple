@@ -22,7 +22,7 @@ const ExpenseForm = (props) => {
       });
     } else {
       setUserInput((prevState) => {
-        return { ...prevState, date: new Date(value) };
+        return { ...prevState, date: value };
       });
     }
   };
@@ -51,7 +51,12 @@ const ExpenseForm = (props) => {
     event.preventDefault();
     // console.log(userInput);
     //Pass data to parent component
-    props.onSaveExpenseData(userInput);
+    const finalFromData = {
+        ...userInput,
+        amount: +userInput.amount,
+        date: new Date(userInput.date)
+    }
+    props.onSaveExpenseData(finalFromData);
 
     setUserInput((prevState) => {
       return {
@@ -88,7 +93,7 @@ const ExpenseForm = (props) => {
               inputChangeHandler("amount", event.target.value)
             }
           />
-          {/* <input
+          {/* <inputonSaveExpenseData
             type="number"
             min="0.01"
             step="0.01"
@@ -100,7 +105,7 @@ const ExpenseForm = (props) => {
           <input
             type="date"
             min="2019-01-01"
-            max="2024-02-29"
+            max="2022-12-31"
             value={userInput.date}
             onChange={(event) => inputChangeHandler("date", event.target.value)}
           />
@@ -108,6 +113,7 @@ const ExpenseForm = (props) => {
       </div>
 
       <div className="new-expense__actions">
+        <button onClick={props.onCancel}>Cancel</button>
         <button type="submit">Add Expense</button>
       </div>
     </form>

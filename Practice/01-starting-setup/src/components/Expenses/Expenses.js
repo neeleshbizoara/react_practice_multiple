@@ -3,6 +3,8 @@ import Card from "../UI/Card";
 import ExpenseItem from "./ExpenseItem";
 import "./Expenses.css";
 import ExpensesFilter from "./ExpensesFilter";
+import ExpensesList from "./ExpensesList";
+import ExpensesChart from "./ExpensesChart";
 /* const EXPENSES = [
   {
     id: "e1",
@@ -56,9 +58,9 @@ function Expenses(props) {
     setFilteredYear(selectedYear);
   };
 
-  const filteredExpenses = props.items.filter(expense => {
+  const filteredExpenses = props.items.filter((expense) => {
     return expense.date.getFullYear().toString() === filteredYear;
-  })
+  });
   // end of Derived / Computed State concept
 
   return (
@@ -67,16 +69,12 @@ function Expenses(props) {
       <ExpensesFilter
         selected={filteredYear}
         onChangeFilter={filterChangeHandler}
-        />
-      <p style={{color: 'white'}}>Date for years {filterInfoText} is hidden.</p>
-      {filteredExpenses.length === 0 && <p style={{color: 'white'}}>No expenses found.</p>}
-        {filteredExpenses.length > 0 && filteredExpenses.map((item) => {
-          return(<ExpenseItem id={item.id}
-            title={item.title}
-            amount={item.amount}
-            date={item.date}
-          />)
-        })}
+      />
+      <p style={{ color: "white" }}>
+        Date for years {filterInfoText} is hidden.
+      </p>
+      <ExpensesChart expenses={filteredExpenses} />
+      <ExpensesList items={filteredExpenses} />
       {/* <ExpenseItem
         title={props.items[0].title}
         amount={props.items[0].amount}
